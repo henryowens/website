@@ -1,6 +1,6 @@
 ---
 title: 'Outstatic'
-status: 'draft'
+status: 'published'
 author:
   name: 'Henry Owens'
   picture: 'https://avatars.githubusercontent.com/u/32868232?v=4'
