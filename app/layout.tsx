@@ -1,7 +1,7 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { FC, PropsWithChildren, ReactNode } from "react";
+import { FC, PropsWithChildren } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,3 +15,5 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => (
     <body className={inter.className}>{children}</body>
   </html>
 );
+
+export default RootLayout;
