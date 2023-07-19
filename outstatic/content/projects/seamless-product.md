@@ -8,6 +8,9 @@ slug: 'seamless-product'
 description: ''
 coverImage: ''
 technologies: []
+frontendTech: [{"label":"Vue.js","value":"vueJs"},{"label":"Typescript","value":"typescript"},{"label":"Storybook","value":"storybook"},{"label":"Apollo","value":"apollo"}]
+backendTech: [{"label":"Node.js","value":"nodeJs"},{"label":"Graphql","value":"graphql"},{"label":"MongoDB","value":"mongoDb"},{"label":"Express","value":"express"}]
+devOpsTech: [{"label":"Bitbucket","value":"bitbucket"},{"label":"GTM","value":"gtm"},{"label":"PaperTrail","value":"paperTrail"}]
 publishedAt: '2023-07-19T12:25:32.324Z'
 ---
 

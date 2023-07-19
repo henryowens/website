@@ -5,7 +5,24 @@
     "frontendTech": {
       "required": false,
       "description": "",
-      "values": [],
+      "values": [
+        {
+          "value": "vueJs",
+          "label": "Vue.js"
+        },
+        {
+          "value": "typescript",
+          "label": "Typescript"
+        },
+        {
+          "value": "storybook",
+          "label": "Storybook"
+        },
+        {
+          "value": "apollo",
+          "label": "Apollo"
+        }
+      ],
       "fieldType": "Tags",
       "dataType": "array",
       "title": "Frontend Tech"
@@ -16,7 +33,24 @@
       "fieldType": "Tags",
       "dataType": "array",
       "title": "Backend Tech",
-      "values": []
+      "values": [
+        {
+          "value": "nodeJs",
+          "label": "Node.js"
+        },
+        {
+          "value": "graphql",
+          "label": "Graphql"
+        },
+        {
+          "value": "mongoDb",
+          "label": "MongoDB"
+        },
+        {
+          "value": "express",
+          "label": "Express"
+        }
+      ]
     },
     "devOpsTech": {
       "required": false,
@@ -24,7 +58,20 @@
       "fieldType": "Tags",
       "dataType": "array",
       "title": "DevOps Tech",
-      "values": []
+      "values": [
+        {
+          "value": "bitbucket",
+          "label": "Bitbucket"
+        },
+        {
+          "value": "gtm",
+          "label": "GTM"
+        },
+        {
+          "value": "paperTrail",
+          "label": "PaperTrail"
+        }
+      ]
     }
   }
 }
