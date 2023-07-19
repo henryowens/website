@@ -1,5 +1,14 @@
 {
   "title": "projects",
   "type": "object",
-  "properties": {}
+  "properties": {
+    "frontendTech": {
+      "required": false,
+      "description": "",
+      "values": [],
+      "fieldType": "Tags",
+      "dataType": "array",
+      "title": "Frontend Tech"
+    }
+  }
 }
