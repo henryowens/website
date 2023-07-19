@@ -23,7 +23,7 @@ const PostSlug: FC<GetStaticPropsContext> = async ({ params }) => {
   if (isEmpty(post)) return <SlugNotFound />;
 
   return (
-    <main className="w-full max-w-2xl p-4 mx-auto">
+    <main className="w-full max-w-2xl mx-auto">
       <Breadcrumbs
         path={[{ href: "/posts", name: "posts" }]}
         activePath={{ href: `/posts/${post.slug}`, name: post.slug }}
