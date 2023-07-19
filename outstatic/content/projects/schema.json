@@ -1,0 +1,77 @@
+{
+  "title": "projects",
+  "type": "object",
+  "properties": {
+    "frontendTech": {
+      "required": false,
+      "description": "",
+      "values": [
+        {
+          "value": "vueJs",
+          "label": "Vue.js"
+        },
+        {
+          "value": "typescript",
+          "label": "Typescript"
+        },
+        {
+          "value": "storybook",
+          "label": "Storybook"
+        },
+        {
+          "value": "apollo",
+          "label": "Apollo"
+        }
+      ],
+      "fieldType": "Tags",
+      "dataType": "array",
+      "title": "Frontend Tech"
+    },
+    "backendTech": {
+      "required": false,
+      "description": "",
+      "fieldType": "Tags",
+      "dataType": "array",
+      "title": "Backend Tech",
+      "values": [
+        {
+          "value": "nodeJs",
+          "label": "Node.js"
+        },
+        {
+          "value": "graphql",
+          "label": "Graphql"
+        },
+        {
+          "value": "mongoDb",
+          "label": "MongoDB"
+        },
+        {
+          "value": "express",
+          "label": "Express"
+        }
+      ]
+    },
+    "devOpsTech": {
+      "required": false,
+      "description": "",
+      "fieldType": "Tags",
+      "dataType": "array",
+      "title": "DevOps Tech",
+      "values": [
+        {
+          "value": "bitbucket",
+          "label": "Bitbucket"
+        },
+        {
+          "value": "gtm",
+          "label": "GTM"
+        },
+        {
+          "value": "paperTrail",
+          "label": "PaperTrail"
+        }
+      ]
+    }
+  }
+}
