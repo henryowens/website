@@ -9,6 +9,13 @@
       "fieldType": "Tags",
       "dataType": "array",
       "title": "Frontend Tech"
+    },
+    "backendTech": {
+      "required": false,
+      "description": "",
+      "fieldType": "String",
+      "dataType": "string",
+      "title": "Backend Tech"
     }
   }
 }
