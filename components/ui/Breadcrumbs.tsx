@@ -3,12 +3,12 @@ import { FC } from "react";
 
 type Route = { name: string; href: string };
 
-const Breadcrumbs: FC<{ path: Route[]; activePath: Route }> = ({
-  path,
-  activePath,
-}) => (
-  <div className="text-charcoal-200 text-xs">
-    <p>
+const Breadcrumbs: FC<{
+  path: Route[];
+  activePath: Route;
+}> = ({ path, activePath }) => (
+  <div className="text-charcoal-100 mb-6">
+    <p className="text-xs">
       /{" "}
       {path.map(({ name, href }, i) => (
         <>

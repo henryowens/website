@@ -2,7 +2,7 @@ interface Author {}
 
 type Status = "published" | "draft";
 
-export interface Post {
+export interface Base {
   title: string;
   slug: string;
   coverImage: string;
@@ -11,5 +11,3 @@ export interface Post {
   publishedAt: string;
   status: Status;
 }
-
-export type Posts = Post[];
