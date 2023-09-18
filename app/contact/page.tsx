@@ -1,50 +1,91 @@
-import { Input, Label, Textarea } from "@/components/ui";
-import { FC, HTMLInputTypeAttribute } from "react";
+"use client";
+import { PageWrapper } from "@/components/ui/page-wrapper";
+import { FC, useState } from "react";
 
-type FormConfig = {
-  name: string;
-  placeholder: string;
-  type: HTMLInputTypeAttribute | "textarea";
-  label: string;
-}[];
+import "@/styles/pages/ContactPage.scss";
+import AutoForm, {
+  AutoFormSubmit,
+  createFormConfig,
+} from "@/components/ui/auto-form";
+import { z } from "zod";
+import Link from "next/link";
 
-const formConfig: FormConfig = [
-  {
-    name: "name",
-    placeholder: "Name",
-    type: "text",
-    label: "Name",
-  },
-  {
-    name: "email",
-    placeholder: "Email",
-    type: "email",
-    label: "Email",
-  },
-  {
-    name: "message",
-    placeholder: "Message",
-    type: "textarea",
-    label: "Message",
-  },
-];
+const ContactPage: FC = () => {
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-const ContactPage: FC = () => (
-  <main>
-    <h1 className="title">Contact</h1>
-    <div>
-      {formConfig.map(({ label, name, ...config }, key) => (
-        <div className="grid w-full max-w-sm items-center gap-1.5" key={key}>
-          <Label htmlFor={name}>{label}</Label>
-          {config.type === "textarea" ? (
-            <Textarea {...config} name={name} />
+  const formConfig = createFormConfig({
+    formSchema: z.object({
+      name: z.string({ required_error: "Please enter your name" }),
+      email: z
+        .string({ required_error: "Please enter your email" })
+        .email("Please enter a valid email"),
+      message: z.string({
+        required_error: "Please enter a message",
+      }),
+    }),
+    fieldConfig: {
+      name: {
+        inputProps: { type: "text", disabled: submitting },
+      },
+      email: {
+        inputProps: { type: "email", disabled: submitting },
+      },
+      message: {
+        fieldType: "textarea",
+        inputProps: { disabled: submitting },
+      },
+    },
+  });
+
+  return (
+    <PageWrapper className="contact-page">
+      <div className="content-container">
+        <div className="w-full">
+          <Link href="/" className="hover:cursor hover:underline text-sm">
+            Back
+          </Link>
+          <h1 className="title">Contact</h1>
+          <hr className="w-full" />
+        </div>
+        <div className="w-full" style={{ minHeight: "350px" }}>
+          {success ? (
+            <p>Message sent successfully</p>
           ) : (
-            <Input {...config} name={name} />
+            <div className="w-full flex flex-col gap-4">
+              <AutoForm
+                onSubmit={async (data) => {
+                  try {
+                    setSubmitting(true);
+                    const response = await fetch("/api/sendEmail", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(data),
+                    });
+
+                    if (response.ok) {
+                      setSuccess(true);
+                    } else {
+                      setSuccess(false);
+                    }
+                  } catch (error) {
+                    console.error("Error sending email:", error);
+                    alert("An error occurred while sending the email");
+                    setSuccess(false);
+                  } finally {
+                    setSubmitting(false);
+                  }
+                }}
+                {...formConfig}
+              >
+                <AutoFormSubmit>Send</AutoFormSubmit>
+              </AutoForm>
+            </div>
           )}
         </div>
-      ))}
-    </div>
-  </main>
-);
+      </div>
+    </PageWrapper>
+  );
+};
 
 export default ContactPage;

@@ -10,11 +10,13 @@
     @apply justify-center;
     @apply items-center;
     @apply gap-12;
-    @apply w-fit;
+    @apply w-full;
+    max-width: 400px;
     .heading {
       @apply flex;
       @apply flex-col;
       @apply gap-5;
+      @apply w-full;
       .title {
         @apply text-center;
         @apply uppercase;

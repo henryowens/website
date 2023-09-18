@@ -4,6 +4,7 @@ import { FC } from "react";
 import { projectService } from "@/cms";
 import { ErrorPage } from "@/components/pages";
 import { Breadcrumbs, Svg } from "@/components/ui";
+import { PageWrapper } from "@/components/ui/page-wrapper";
 
 const ProjectPage: FC<GetStaticPropsContext> = ({ params }) => {
   if (!params?.slug) return <ErrorPage message="Project not found" />;
@@ -27,7 +28,7 @@ const ProjectPage: FC<GetStaticPropsContext> = ({ params }) => {
   ];
 
   return (
-    <main className="w-full max-w-4xl mx-auto">
+    <PageWrapper className="w-full max-w-4xl mx-auto">
       <Breadcrumbs
         activePath={{ href: `/projects/${project.slug}`, name: project.slug }}
         path={[{ href: "/projects", name: "projects" }]}
@@ -61,7 +62,7 @@ const ProjectPage: FC<GetStaticPropsContext> = ({ params }) => {
           ))}
         </div>
       </div>
-    </main>
+    </PageWrapper>
   );
 };
 

@@ -1,3 +1,4 @@
+import { PageWrapper } from "@/components/ui/page-wrapper";
 import Link from "next/link";
 import { getDocuments } from "outstatic/server";
 import { FC } from "react";
@@ -15,7 +16,7 @@ const PostsPage: FC = () => {
   if (!posts) return <p>No posts found</p>;
 
   return (
-    <main className="w-full max-w-3xl m-auto">
+    <PageWrapper className="w-full max-w-3xl m-auto">
       <h1 className="mb-7">Projects</h1>
       <div className="flex w-full">
         {posts.map(({ title, publishedAt, author, slug }, i) => (
@@ -35,7 +36,7 @@ const PostsPage: FC = () => {
           </Link>
         ))}
       </div>
-    </main>
+    </PageWrapper>
   );
 };
 
