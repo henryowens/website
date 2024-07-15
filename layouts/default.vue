@@ -1,6 +1,7 @@
 <template>
   <div class="max-w-[250px] gap-4 w-full max-h-[350px] h-full flex flex-col items-center justify-center">
     <RandomCharSentance :sentance="title" :key="title" />
+
     <div class="min-h-[225px] flex justify-center items-center">
       <slot />
     </div>
