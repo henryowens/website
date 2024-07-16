@@ -1,17 +1,19 @@
 <template>
-  <p
+  <div
     :style="{
       textDecoration: lowercase ? 'lowercase' : 'uppercase',
     }"
+    class="random__char__word"
   >
     <RandomChar
       v-for="(char, index) in splitWord"
       :key="index"
-      :delay="props.initalDelay + index * props.increment"
+      :width="letterWidth"
+      :delay="initalDelay + index * increment"
       :char="char"
-      :lowercase="props.lowercase"
+      lowercase
     />
-  </p>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +23,7 @@ const props = withDefaults(
     initalDelay?: number;
     increment?: number;
     lowercase?: boolean;
+    letterWidth?: string;
   }>(),
   {
     initalDelay: 1000,
@@ -32,7 +35,7 @@ const splitWord = computed(() => props.word.split(""));
 </script>
 
 <style scoped lang="scss">
-p {
+.random__char__word {
   @apply flex;
   @apply items-center;
   @apply relative;

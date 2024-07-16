@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -32,13 +32,9 @@ useSeoMeta({
 </script>
 
 <style scoped lang="scss">
-// .app {
-//   @apply min-h-screen;
-//   @apply flex;
-//   @apply items-center;
-//   @apply justify-center;
-//   @apply flex-col;
-//   @apply gap-10;
-//   @apply m-auto;
-//   @apply max-w-[300px];
-// }</style>
+.app {
+  max-width: 400px;
+  margin: 0 20px;
+  width: 100%;
+}
+</style>

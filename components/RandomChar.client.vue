@@ -1,7 +1,8 @@
 <template>
   <div
+    class="random__char"
     :style="{
-      width: lowercase ? '12px' : '15px',
+      width: width ? `${width}px` : lowercase ? '12px' : '15px',
     }"
   >
     {{ displayChar }}
@@ -16,6 +17,7 @@ const props = withDefaults(
     delay: number;
     char: string;
     lowercase?: boolean;
+    width?: string;
   }>(),
   {
     delay: 1000,
@@ -50,9 +52,8 @@ const charInterval = setInterval(() => {
 onUnmounted(() => clearInterval(charInterval));
 </script>
 
-<style scoped>
-div {
-  width: 15px;
+<style lang="scss" scorped>
+.random__char {
   display: flex;
   align-items: center;
   justify-content: center;

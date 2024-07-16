@@ -1,12 +1,13 @@
 <template>
   <div class="sentance__container">
-    <RandomCharWord v-for="(word, i) in words" :key="i" :word="word" />
+    <RandomCharWord v-for="(word, i) in words" :key="i" :word="word" :letter-width="letterWidth" />
   </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
   sentance: string;
+  letterWidth?: string;
 }>();
 
 const words = computed(() => props.sentance.split(" "));

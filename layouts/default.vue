@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[250px] gap-4 w-full max-h-[350px] h-full flex flex-col items-center justify-center">
+  <div class="default__layout">
     <RandomCharSentance :sentance="title" :key="title" />
 
     <div class="min-h-[225px] flex justify-center items-center">
@@ -45,4 +45,11 @@ const title = computed(() => route.meta.title?.toString() ?? '');
 .router-link-active {
   @apply opacity-100;
 }
+
+.default__layout {
+  @apply flex flex-col;
+  @apply items-center;
+  @apply gap-5;
+  @apply items-center justify-center;
+} 
 </style>
