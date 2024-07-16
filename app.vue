@@ -6,16 +6,15 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 const SEO_META = {
-  title: 'Henry Owens',
-  description: 'Henry Owens is a software engineer with a passion for web development and design. He is a full-stack developer with experience in front-end and back-end technologies.',
-  image: 'https://henryowens.dev/og-image.png'
-}
+  title: "Henry Owens",
+  description:
+    "Henry Owens is a software engineer with a passion for web development and design. He is a full-stack developer with experience in front-end and back-end technologies.",
+  image: "https://henryowens.dev/og-image.png",
+};
 
-const route = useRoute()
-
+const route = useRoute();
 
 useSeoMeta({
   title: SEO_META.title,
@@ -24,11 +23,11 @@ useSeoMeta({
   ogDescription: SEO_META.description,
   ogImage: SEO_META.image,
   ogUrl: () => `https://henryowens.dev/${route.path}`,
-  ogType: 'website',
+  ogType: "website",
   twitterTitle: SEO_META.title,
   twitterDescription: SEO_META.description,
   twitterImage: SEO_META.image,
-})
+});
 </script>
 
 <style scoped lang="scss">

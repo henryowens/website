@@ -1,10 +1,13 @@
 <template>
   <p class="links__container">
-    <NuxtLink class="links__container--link" to="https://wensowenso.com" target="_blank">
-      <RandomCharWord word="wensowenso.com" lowercase />
-    </NuxtLink>
-    <NuxtLink class="links__container--link" to="https://dontwalkbutrun.com" target="_blank">
-      <RandomCharWord word="dontwalkbutrun.com" lowercase />
+    <NuxtLink
+      v-for="({ name, url }, i) in links"
+      :key="i"
+      class="links__container--link"
+      :to="url"
+      target="_blank"
+    >
+      <RandomCharWord :word="name" lowercase />
     </NuxtLink>
   </p>
 </template>
@@ -13,6 +16,17 @@
 definePageMeta({
   title: "HENRY OWENS",
 });
+
+const links = [
+  {
+    name: "wensowenso.com",
+    url: "https://wensowenso.com",
+  },
+  // {
+  //   name: "dontwalkbutrun.com",
+  //   url: "https://dontwalkbutrun.com",
+  // },
+];
 </script>
 
 <style scoped lang="scss">
@@ -43,6 +57,5 @@ definePageMeta({
       @apply w-full;
     }
   }
-
 }
 </style>
