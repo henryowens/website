@@ -59,3 +59,21 @@ const links = [
   }
 }
 </style>
+
+<style lang="scss" scoped>
+.random__char__word {
+  &::after {
+    content: "→";
+    position: absolute;
+    right: -20px;
+    transform: rotate(-45deg);
+    @apply text-transparent;
+    @apply transition-all;
+    @apply delay-300;
+  }
+  &:hover::after {
+    @apply text-red-500;
+    @apply transition-all;
+  }
+}
+</style>
