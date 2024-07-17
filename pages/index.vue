@@ -22,6 +22,10 @@ const links = [
     name: "wensowenso.com",
     url: "https://wensowenso.com",
   },
+  {
+    name: "eucoincollector.com",
+    url: "https://eucoincollector.com",
+  },
   // {
   //   name: "dontwalkbutrun.com",
   //   url: "https://dontwalkbutrun.com",
