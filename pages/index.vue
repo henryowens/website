@@ -17,6 +17,12 @@ definePageMeta({
   title: "HENRY OWENS",
 });
 
+useHead({
+  htmlAttrs: {
+    lang: "en",
+  },
+});
+
 const links = [
   {
     name: "wensowenso.com",
