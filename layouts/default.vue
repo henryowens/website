@@ -2,15 +2,13 @@
   <div class="default__layout">
     <div class="default__layout--nav__bar">
       <div class="default__layout--nav__bar--left">
-        <NuxtLink to="https://www.github.com/henryowens" target="_blank">
-          <Icon name="uil:github" />
-        </NuxtLink>
-
         <NuxtLink
-          to="https://www.linkedin.com/in/henrytomowens"
+          v-for="({ icon, url }, i) in socials"
+          :key="i"
+          :to="url"
           target="_blank"
         >
-          <Icon name="uil:linkedin" />
+          <Icon :name="icon" />
         </NuxtLink>
       </div>
       <div>
@@ -36,6 +34,8 @@
 </template>
 
 <script setup lang="ts">
+import socials from "~/content/socials";
+
 const route = useRoute();
 
 const title = computed(() => route.meta.title?.toString() ?? "");

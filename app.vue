@@ -7,26 +7,21 @@
 </template>
 
 <script setup lang="ts">
-const SEO_META = {
-  title: "Henry Owens",
-  description:
-    "Henry Owens is a software engineer with a passion for web development and design. He is a full-stack developer with experience in front-end and back-end technologies.",
-  image: "https://henryowens.dev/og-image.png",
-};
+import meta from "~/content/meta";
 
 const route = useRoute();
 
 useSeoMeta({
-  title: SEO_META.title,
-  description: SEO_META.description,
-  ogTitle: SEO_META.title,
-  ogDescription: SEO_META.description,
-  ogImage: SEO_META.image,
+  title: meta.title,
+  description: meta.description,
+  ogTitle: meta.title,
+  ogDescription: meta.description,
+  ogImage: meta.image,
   ogUrl: () => `https://henryowens.dev/${route.path}`,
   ogType: "website",
-  twitterTitle: SEO_META.title,
-  twitterDescription: SEO_META.description,
-  twitterImage: SEO_META.image,
+  twitterTitle: meta.title,
+  twitterDescription: meta.description,
+  twitterImage: meta.image,
 });
 </script>
 

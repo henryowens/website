@@ -1,7 +1,7 @@
 <template>
   <p class="links__container">
     <NuxtLink
-      v-for="({ name, url }, i) in links"
+      v-for="({ name, url }, i) in projects"
       :key="i"
       class="links__container--link"
       :to="url"
@@ -13,6 +13,8 @@
 </template>
 
 <script setup lang="ts">
+import projects from "~/content/projects";
+
 definePageMeta({
   title: "HENRY OWENS",
 });
@@ -22,21 +24,6 @@ useHead({
     lang: "en",
   },
 });
-
-const links = [
-  {
-    name: "wensowenso.com",
-    url: "https://wensowenso.com",
-  },
-  {
-    name: "eucoincollector.com",
-    url: "https://eucoincollector.com",
-  },
-  // {
-  //   name: "dontwalkbutrun.com",
-  //   url: "https://dontwalkbutrun.com",
-  // },
-];
 </script>
 
 <style scoped lang="scss">
