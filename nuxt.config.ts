@@ -26,5 +26,6 @@ export default defineNuxtConfig({
   },
   sitemap: {
     includeAppSources: true,
+    exclude: ["/contact"],
   },
 });
