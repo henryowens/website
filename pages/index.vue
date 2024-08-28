@@ -1,10 +1,11 @@
 <template>
   <p class="links__container">
     <NuxtLink
-      v-for="({ name, url }, i) in projects"
+      v-if="links"
+      v-for="({ name, link }, i) in links"
       :key="i"
       class="links__container--link"
-      :to="url"
+      :to="link"
       target="_blank"
     >
       <RandomCharWord :word="name" lowercase />
@@ -13,7 +14,18 @@
 </template>
 
 <script setup lang="ts">
+import { useQuery } from "@tanstack/vue-query";
 import projects from "~/content/projects";
+import queries from "~/queries";
+
+const { data } = useQuery({
+  ...queries.storyblok.story("", {}),
+  staleTime: Infinity,
+  retry: false,
+  placeholderData: (previous) => previous,
+});
+
+const links = computed(() => data.value?.content?.body);
 
 definePageMeta({
   title: "HENRY OWENS",
