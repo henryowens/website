@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
   },
 
-  modules: ["@nuxt/icon", "@nuxtjs/seo", "@nuxtjs/sitemap"],
+  modules: ["@nuxt/icon", "@nuxtjs/seo", "@nuxtjs/sitemap", "nuxt-delay-hydration"],
   site: {
     url: "https://henryowens.dev",
     name: meta.title,
