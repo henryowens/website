@@ -23,11 +23,11 @@
     </div>
 
     <div class="sublinks__container">
-      <NuxtLink class="sublinks__container--link" to="/">
+      <NuxtLink class="sublinks__container--link" to="/" aria-label="Link to Home page">
         <RandomCharWord word="home" lowercase />
       </NuxtLink>
 
-      <NuxtLink class="sublinks__container--link" to="/info">
+      <NuxtLink class="sublinks__container--link" to="/info" aria-label="Link to Info page" >
         <RandomCharWord word="info" lowercase />
       </NuxtLink>
     </div>

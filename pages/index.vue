@@ -6,6 +6,7 @@
       class="links__container--link"
       :to="url"
       target="_blank"
+      :aria-label="name"
     >
       <RandomCharWord :word="name" lowercase />
     </NuxtLink>
