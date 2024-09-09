@@ -3,12 +3,13 @@
     <div class="default__layout--nav__bar">
       <div class="default__layout--nav__bar--left">
         <NuxtLink
-          v-for="({ icon, url }, i) in socials"
+          v-for="({ icon, url, label }, i) in socials"
           :key="i"
           :to="url"
+          :aria-label="label"
           target="_blank"
         >
-          <Icon :name="icon" />
+          <Icon :name="icon" size="24" />
         </NuxtLink>
       </div>
       <div>
@@ -69,22 +70,26 @@ const title = computed(() => route.meta.title?.toString() ?? "");
   @apply items-center justify-center;
 
   &--nav__bar {
-    @apply fixed top-0 left-0 w-full p-4;
+    @apply fixed top-0 left-0 w-full px-4;
     @apply flex justify-between;
     @apply items-center;
     @apply gap-2;
     &--left {
-      @apply flex items-center gap-1;
+      @apply flex items-center;
       @apply cursor-pointer;
       @apply text-lg;
-
+      > a {
+        @apply  py-4 px-2 flex h-fit;
+        &:hover {
+          .iconify {
+            @apply transition-all;
+            @apply opacity-100;
+          }
+        }
+      }
       .iconify {
         @apply opacity-50;
         @apply transition-all;
-        &:hover {
-          @apply transition-all;
-          @apply opacity-100;
-        }
       }
     }
   }
