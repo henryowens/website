@@ -2,13 +2,7 @@
   <div class="default__layout">
     <div class="default__layout--nav__bar">
       <div class="default__layout--nav__bar--left">
-        <NuxtLink
-          v-for="({ icon, url, label }, i) in socials"
-          :key="i"
-          :to="url"
-          :aria-label="label"
-          target="_blank"
-        >
+        <NuxtLink v-for="({ icon, url, label }, i) in socials" :key="i" :to="url" :aria-label="label" target="_blank">
           <Icon :name="icon" size="24" />
         </NuxtLink>
       </div>
@@ -27,7 +21,7 @@
         <RandomCharWord word="home" lowercase />
       </NuxtLink>
 
-      <NuxtLink class="sublinks__container--link" to="/info" aria-label="Link to Info page" >
+      <NuxtLink class="sublinks__container--link" to="/info" aria-label="Link to Info page">
         <RandomCharWord word="info" lowercase />
       </NuxtLink>
     </div>
@@ -40,6 +34,30 @@ import socials from "~/content/socials";
 const route = useRoute();
 
 const title = computed(() => route.meta.title?.toString() ?? "");
+
+useSchemaOrg([
+  definePerson({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Henry Owens",
+    "url": "https://henryowens.dev",
+    "sameAs": [
+      "https://github.com/henryowens",
+      "https://linkedin.com/in/henrytomowens"
+    ],
+    "jobTitle": "Web Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "MatchWornShirt",
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Amsterdam",
+      "addressRegion": "North Holland",
+      "addressCountry": "Netherlands",
+    }
+  })
+])
 </script>
 
 <style scoped lang="scss">
@@ -74,12 +92,15 @@ const title = computed(() => route.meta.title?.toString() ?? "");
     @apply flex justify-between;
     @apply items-center;
     @apply gap-2;
+
     &--left {
       @apply flex items-center;
       @apply cursor-pointer;
       @apply text-lg;
-      > a {
-        @apply  py-4 px-2 flex h-fit;
+
+      >a {
+        @apply py-4 px-2 flex h-fit;
+
         &:hover {
           .iconify {
             @apply transition-all;
@@ -87,6 +108,7 @@ const title = computed(() => route.meta.title?.toString() ?? "");
           }
         }
       }
+
       .iconify {
         @apply opacity-50;
         @apply transition-all;
