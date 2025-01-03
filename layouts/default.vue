@@ -34,30 +34,6 @@ import socials from "~/content/socials";
 const route = useRoute();
 
 const title = computed(() => route.meta.title?.toString() ?? "");
-
-useSchemaOrg([
-  definePerson({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Henry Owens",
-    "url": "https://henryowens.dev",
-    "sameAs": [
-      "https://github.com/henryowens",
-      "https://linkedin.com/in/henrytomowens"
-    ],
-    "jobTitle": "Web Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "MatchWornShirt",
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Amsterdam",
-      "addressRegion": "North Holland",
-      "addressCountry": "Netherlands",
-    }
-  })
-])
 </script>
 
 <style scoped lang="scss">

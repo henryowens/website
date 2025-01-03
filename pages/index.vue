@@ -1,13 +1,7 @@
 <template>
   <p class="links__container">
-    <NuxtLink
-      v-for="({ name, url }, i) in projects"
-      :key="i"
-      class="links__container--link"
-      :to="url"
-      target="_blank"
-      :aria-label="name"
-    >
+    <NuxtLink v-for="({ name, url }, i) in projects" :key="i" class="links__container--link" :to="url" target="_blank"
+      :aria-label="name">
       <RandomCharWord :word="name" lowercase />
     </NuxtLink>
   </p>
@@ -69,6 +63,7 @@ useHead({
     @apply transition-all;
     @apply delay-300;
   }
+
   &:hover::after {
     @apply text-red-500;
     @apply transition-all;
