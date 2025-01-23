@@ -1,7 +1,7 @@
 const projects = [
   {
     name: "Casa De Henry",
-    url: "https://pinterest.com/casadehenryprints",
+    url: "https://nl.pinterest.com/casadehenryprints/_pins/",
   },
   {
     name: "wensowenso.com",
