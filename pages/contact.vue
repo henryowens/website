@@ -1,12 +1,12 @@
 <template>
   <div class="content__container">
-    <RandomCharSentance sentance="coming soon" />
+    <RandomCharText text="coming soon" />
   </div>
 </template>
 
 <script setup lang="ts">
 definePageMeta({
-  title: "CONTACT",
+  title: "Contact",
 });
 </script>
 

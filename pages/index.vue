@@ -1,17 +1,23 @@
 <template>
-  <p class="links__container">
-    <NuxtLink v-for="({ name, url }, i) in projects" :key="i" class="links__container--link" :to="url" target="_blank"
-      :aria-label="name">
-      <RandomCharWord :word="name" lowercase />
+  <div class="links__container">
+    <NuxtLink
+      v-for="({ name, url }, i) in projects"
+      :key="i"
+      class="links__container--link"
+      :to="url"
+      target="_blank"
+      :aria-label="name"
+    >
+      <RandomCharText :text="name.toLocaleLowerCase()" />
     </NuxtLink>
-  </p>
+  </div>
 </template>
 
 <script setup lang="ts">
 import projects from "~/content/projects";
 
 definePageMeta({
-  title: "HENRY OWENS",
+  title: "Henry Owens",
 });
 
 useHead({
@@ -26,11 +32,11 @@ useHead({
   @apply flex flex-col;
   @apply items-center;
   @apply gap-5;
-  @apply text-red-500;
 
   &--link {
     @apply w-fit;
     @apply cursor-pointer;
+    @apply text-red-500;
     @apply relative;
 
     &:before {

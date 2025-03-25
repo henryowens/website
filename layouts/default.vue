@@ -2,27 +2,39 @@
   <div class="default__layout">
     <div class="default__layout--nav__bar">
       <div class="default__layout--nav__bar--left">
-        <NuxtLink v-for="({ icon, url, label }, i) in socials" :key="i" :to="url" :aria-label="label" target="_blank">
+        <NuxtLink
+          v-for="({ icon, url, label }, i) in socials"
+          :key="i"
+          :to="url"
+          :aria-label="label"
+          target="_blank"
+        >
           <Icon :name="icon" size="24" />
         </NuxtLink>
       </div>
-      <div>
-        <!-- <Icon name="icon-park-outline:sun-one" color="black" /> -->
-      </div>
     </div>
-    <RandomCharSentance :sentance="title" :key="title" />
+
+    <RandomCharText :text="title" :key="title" />
 
     <div class="min-h-[225px] flex justify-center items-center">
       <slot />
     </div>
 
     <div class="sublinks__container">
-      <NuxtLink class="sublinks__container--link" to="/" aria-label="Link to Home page">
-        <RandomCharWord word="home" lowercase />
+      <NuxtLink
+        class="sublinks__container--link"
+        to="/"
+        aria-label="Link to Home page"
+      >
+        <RandomCharText text="home" />
       </NuxtLink>
 
-      <NuxtLink class="sublinks__container--link" to="/info" aria-label="Link to Info page">
-        <RandomCharWord word="info" lowercase />
+      <NuxtLink
+        class="sublinks__container--link"
+        to="/info"
+        aria-label="Link to Info page"
+      >
+        <RandomCharText text="info" />
       </NuxtLink>
     </div>
   </div>
@@ -74,7 +86,7 @@ const title = computed(() => route.meta.title?.toString() ?? "");
       @apply cursor-pointer;
       @apply text-lg;
 
-      >a {
+      > a {
         @apply py-4 px-2 flex h-fit;
 
         &:hover {
