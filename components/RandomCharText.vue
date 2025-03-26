@@ -1,5 +1,5 @@
 <template>
-  <component :is="is" :key="processedText">
+  <component :is="is" :key="processedText" class="flex flex-wrap gap-[10px]">
     <span
       v-for="(word, wordIndex) in processedText.split(' ')"
       class="whitespace-nowrap"
@@ -8,11 +8,11 @@
       <span
         v-for="(char, charIndex) in word.split('')"
         :key="charIndex"
-        class="w-4 inline-flex justify-center items-end"
+        :class="`char__${size}`"
       >
         {{ char }}
       </span>
-      <span class="w-4 inline-flex justify-center items-end">
+      <span :class="`char__${size}`">
         {{ " " }}
       </span>
     </span>
@@ -24,11 +24,15 @@ import { useTimeout, useInterval } from "@vueuse/core";
 
 const props = withDefaults(
   defineProps<{
+    size?: "sm" | "md" | "lg";
     text: string;
     is?: string;
+    time?: number;
   }>(),
   {
     is: "p",
+    size: "md",
+    time: 1000,
   }
 );
 
@@ -54,7 +58,9 @@ const getProcessedText = () => {
 
 const processedText = ref(props.text);
 
-const { pause: pauseInterval } = useInterval(100, {
+const intervalTime = computed(() => props.time / 10);
+
+const { pause: pauseInterval } = useInterval(intervalTime, {
   callback: () => {
     processedText.value = getProcessedText();
   },
@@ -62,22 +68,53 @@ const { pause: pauseInterval } = useInterval(100, {
   immediate: true,
 });
 
-useTimeout(1000, {
+useTimeout(props.time, {
   callback: () => {
     pauseInterval();
-    let textLength = props.text.length;
-    let count = 0;
 
-    const interval = setInterval(() => {
-      const original = props.text.substring(0, count);
-      const random = getProcessedText().substring(count, textLength);
-      processedText.value = original + random;
-      if (count === textLength) {
-        clearInterval(interval);
+    const countLength = props.time / intervalTime.value;
+    let count = 0;
+    const wordSplitInterval = setInterval(() => {
+      const words = props.text.split(" ");
+      const newWords = words.map((word) => {
+        const step = Math.ceil(word.length / countLength);
+        const original = word.substring(0, step * count);
+
+        if (original === word) {
+          return original;
+        }
+
+        const random = getProcessedText().substring(step * count, word.length);
+        return original + random;
+      });
+      processedText.value = newWords.join(" ");
+
+      if (count === countLength - 1) {
+        processedText.value = props.text;
+        clearInterval(wordSplitInterval);
       }
       count++;
-    }, 100);
+    }, intervalTime.value);
   },
   immediate: true,
 });
 </script>
+
+<style lang="scss" scoped>
+.char {
+  &__sm {
+    // @apply inline-flex justify-center items-end;
+    // @apply w-3;
+    @apply text-xs;
+  }
+  &__md {
+    // @apply inline-flex justify-center items-end;
+    // @apply w-4;
+    @apply text-base;
+  }
+  &__lg {
+    @apply inline-flex justify-center items-end;
+    @apply text-lg;
+  }
+}
+</style>

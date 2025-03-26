@@ -16,10 +16,6 @@
 <script setup lang="ts">
 import projects from "~/content/projects";
 
-definePageMeta({
-  title: "Henry Owens",
-});
-
 useHead({
   htmlAttrs: {
     lang: "en",

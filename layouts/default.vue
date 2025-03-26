@@ -3,7 +3,17 @@
     <div class="default__layout--nav__bar">
       <div class="default__layout--nav__bar--left">
         <NuxtLink
+          to="/"
+          aria-label="Link to Home page"
+          class="opacity-50 hover:opacity-100 transition-all"
+        >
+          <RandomCharText text="Henry Owens" />
+        </NuxtLink>
+      </div>
+      <div class="default__layout--nav__bar--right gap-2">
+        <NuxtLink
           v-for="({ icon, url, label }, i) in socials"
+          class="flex items-center"
           :key="i"
           :to="url"
           :aria-label="label"
@@ -11,30 +21,28 @@
         >
           <Icon :name="icon" size="24" />
         </NuxtLink>
+        <span class="text-sm">
+          |
+          <Clock />
+        </span>
       </div>
     </div>
 
-    <RandomCharText :text="title" :key="title" />
+    <RandomCharText :text="title ?? ''" :key="title" class="mt-14 mb-4" />
 
-    <div class="min-h-[225px] flex justify-center items-center">
+    <div class="flex-1 min-h-[225px] flex justify-center items-center w-full">
       <slot />
     </div>
 
     <div class="sublinks__container">
       <NuxtLink
+        v-for="({ url, label, ariaLabel }, i) in links"
+        :key="i"
         class="sublinks__container--link"
-        to="/"
-        aria-label="Link to Home page"
+        :to="url"
+        :aria-label="ariaLabel"
       >
-        <RandomCharText text="home" />
-      </NuxtLink>
-
-      <NuxtLink
-        class="sublinks__container--link"
-        to="/info"
-        aria-label="Link to Info page"
-      >
-        <RandomCharText text="info" />
+        <RandomCharText size="sm" class="nav-link" :text="label" />
       </NuxtLink>
     </div>
   </div>
@@ -46,6 +54,21 @@ import socials from "~/content/socials";
 const route = useRoute();
 
 const title = computed(() => route.meta.title?.toString() ?? "");
+
+const links = [
+  { url: "/", label: "home", ariaLabel: "Link to Home page" },
+  {
+    url: "/projects",
+    label: "projects",
+    ariaLabel: "Link to My Projects page",
+  },
+  {
+    url: "/experience",
+    label: "experience",
+    ariaLabel: "Link to My Experience page",
+  },
+  { url: "/info", label: "info", ariaLabel: "Link to Info page" },
+];
 </script>
 
 <style scoped lang="scss">
@@ -56,7 +79,11 @@ const title = computed(() => route.meta.title?.toString() ?? "");
     @apply cursor-pointer;
     @apply opacity-50;
     @apply transition-all;
-    @apply text-xs;
+    @apply text-[10px] sm:text-xs;
+    @apply py-3;
+    @apply flex-1;
+    @apply text-center;
+    @apply border;
 
     &:hover {
       @apply transition-all;
@@ -72,8 +99,9 @@ const title = computed(() => route.meta.title?.toString() ?? "");
 .default__layout {
   @apply flex flex-col;
   @apply items-center;
-  @apply gap-5;
+  @apply gap-0;
   @apply items-center justify-center;
+  @apply flex-1;
 
   &--nav__bar {
     @apply fixed top-0 left-0 w-full px-4;
@@ -81,13 +109,12 @@ const title = computed(() => route.meta.title?.toString() ?? "");
     @apply items-center;
     @apply gap-2;
 
-    &--left {
+    &--right {
       @apply flex items-center;
-      @apply cursor-pointer;
       @apply text-lg;
 
       > a {
-        @apply py-4 px-2 flex h-fit;
+        @apply py-4  flex h-fit;
 
         &:hover {
           .iconify {
@@ -102,6 +129,13 @@ const title = computed(() => route.meta.title?.toString() ?? "");
         @apply transition-all;
       }
     }
+  }
+}
+
+.nav-link {
+  @apply justify-center;
+  :deep(.char__sm) {
+    @apply md:text-base;
   }
 }
 </style>

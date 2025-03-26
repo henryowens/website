@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    font-family: "Sono", monospace;
+    font-optical-sizing: auto;
+}
+
 .page-enter-active,
 .page-leave-active {
     @apply transition-all;

@@ -1,8 +1,14 @@
 <template>
   <div class="content__container">
-    <RandomCharText text="I am a website developer with over 7 years experience." letter-width="11" />
+    <RandomCharText
+      text="I am a website developer with over 7 years experience."
+      class="justify-center"
+    />
 
-    <RandomCharText text="I enjoy to create user experiences people love." letter-width="11" />
+    <RandomCharText
+      text="I enjoy to create user experiences people love."
+      class="justify-center"
+    />
   </div>
 </template>
 
@@ -18,6 +24,8 @@ definePageMeta({
   @apply flex-col;
   @apply gap-6;
   @apply text-blue-500;
+  @apply w-full;
+  @apply mx-4;
 }
 </style>
 

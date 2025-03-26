@@ -27,8 +27,7 @@ useSeoMeta({
 
 <style scoped lang="scss">
 .app {
-  max-width: 400px;
-  margin: 0 20px;
+  @apply flex flex-col flex-1 h-dvh;
   width: 100%;
 }
 </style>

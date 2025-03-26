@@ -17,17 +17,32 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
   },
 
-  modules: ["@nuxt/icon", "@nuxtjs/seo", "@nuxtjs/sitemap", "nuxt-schema-org", "@vueuse/nuxt"],
+  modules: [
+    "@nuxt/icon",
+    "@nuxtjs/sitemap",
+    "nuxt-schema-org",
+    "@vueuse/nuxt",
+    "@nuxtjs/google-fonts",
+  ],
+
+  googleFonts: {
+    families: {
+      Sono: true,
+    },
+  },
+
   site: {
     url: "https://henryowens.dev",
     name: meta.title,
     description: meta.description,
     defaultLocale: "en", // not needed if you have @nuxtjs/i18n installed
   },
+
   sitemap: {
     includeAppSources: true,
     exclude: ["/contact"],
   },
+
   schemaOrg: {
     identity: {
       "@type": "Person",
@@ -53,4 +68,6 @@ export default defineNuxtConfig({
     },
     defaults: true,
   },
+
+  compatibilityDate: "2025-03-26",
 });
