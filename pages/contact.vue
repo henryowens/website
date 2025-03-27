@@ -1,5 +1,5 @@
 <template>
-  <div class="content__container">
+  <div class="contact__page">
     <RandomCharText text="coming soon" />
   </div>
 </template>
@@ -11,10 +11,8 @@ definePageMeta({
 </script>
 
 <style scoped lang="scss">
-.content__container {
-  @apply flex;
-  @apply flex-col;
-  @apply gap-6;
+.contact__page {
+  @apply flex flex-col;
   @apply text-green-500;
 }
 </style>

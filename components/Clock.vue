@@ -1,10 +1,15 @@
 <template>
-  <span>
-    {{ checkPrefixWithZero(timenow.getUTCHours()) }}<span>:</span
-    >{{ checkPrefixWithZero(timenow.getUTCMinutes())
-    }}<span class="clock-bar">:</span
-    >{{ checkPrefixWithZero(timenow.getUTCSeconds()) }}
-  </span>
+  <ClientOnly>
+    <span>
+      {{ checkPrefixWithZero(timenow.getUTCHours()) }}<span>:</span
+      >{{ checkPrefixWithZero(timenow.getUTCMinutes()) }}<span>:</span
+      >{{ checkPrefixWithZero(timenow.getUTCSeconds()) }}
+    </span>
+
+    <template #fallback>
+      <span>00:00:00</span>
+    </template>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">
@@ -14,8 +19,10 @@ const checkPrefixWithZero = (value: number) =>
   value.toString().length < 2 ? `0${value}` : value;
 
 const interval = useInterval(1000, {
-  callback: () => {
-    timenow.value = new Date();
+  callback: async () => {
+    setTimeout(() => {
+      timenow.value = new Date();
+    }, 1000);
   },
 });
 

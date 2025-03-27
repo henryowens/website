@@ -1,9 +1,9 @@
 <template>
-  <div class="links__container">
+  <div class="home__page">
     <NuxtLink
-      v-for="({ name, url }, i) in projects"
-      :key="i"
-      class="links__container--link"
+      v-for="({ name, url }, projectIndex) in projects"
+      :key="projectIndex"
+      class="home__page--link"
       :to="url"
       target="_blank"
       :aria-label="name"
@@ -24,7 +24,7 @@ useHead({
 </script>
 
 <style scoped lang="scss">
-.links__container {
+.home__page {
   @apply flex flex-col;
   @apply items-center;
   @apply gap-5;
@@ -50,25 +50,6 @@ useHead({
     &:hover:before {
       @apply w-full;
     }
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-.random__char__word {
-  &::after {
-    content: "→";
-    position: absolute;
-    right: -20px;
-    transform: rotate(-45deg);
-    @apply text-transparent;
-    @apply transition-all;
-    @apply delay-300;
-  }
-
-  &:hover::after {
-    @apply text-red-500;
-    @apply transition-all;
   }
 }
 </style>

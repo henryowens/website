@@ -1,19 +1,19 @@
 <template>
   <div class="default__layout">
-    <div class="default__layout--nav__bar">
-      <div class="default__layout--nav__bar--left">
+    <header class="default__layout--header">
+      <div class="default__layout--header--left">
         <NuxtLink
           to="/"
           aria-label="Link to Home page"
-          class="opacity-50 hover:opacity-100 transition-all"
+          class="default__layout--header--left--link"
         >
           <RandomCharText text="Henry Owens" />
         </NuxtLink>
       </div>
-      <div class="default__layout--nav__bar--right gap-2">
+      <div class="default__layout--header--right">
         <NuxtLink
           v-for="({ icon, url, label }, i) in socials"
-          class="flex items-center"
+          class="default__layout--header--right--link"
           :key="i"
           :to="url"
           :aria-label="label"
@@ -21,30 +21,43 @@
         >
           <Icon :name="icon" size="24" />
         </NuxtLink>
-        <span class="text-sm">
+        <span class="default__layout--header--right--clock">
           |
-          <Clock />
+          <Clock :server-timestamp="Date.now()" />
         </span>
       </div>
-    </div>
+    </header>
 
-    <RandomCharText :text="title ?? ''" :key="title" class="mt-14 mb-4 h-5" />
+    <RandomCharText
+      :text="title ?? ''"
+      :key="title"
+      class="default__layout--page__title"
+    />
 
-    <div class="flex-1 min-h-[225px] flex justify-center items-center w-full">
+    <div class="default__layout--page__container">
       <slot />
     </div>
 
-    <div class="sublinks__container">
-      <NuxtLink
-        v-for="({ url, label, ariaLabel }, i) in links"
-        :key="i"
-        class="sublinks__container--link"
-        :to="url"
-        :aria-label="ariaLabel"
-      >
-        <RandomCharText size="sm" class="nav-link" :text="label" />
-      </NuxtLink>
-    </div>
+    <footer class="default__layout--footer">
+      <nav>
+        <ul>
+          <li
+            v-for="({ url, label, ariaLabel }, linkIndex) in links"
+            :key="linkIndex"
+            class="default__layout--footer--link"
+          >
+            <NuxtLink :to="url" :aria-label="ariaLabel">
+              <RandomCharText
+                is="span"
+                size="sm"
+                class="nav-link"
+                :text="label"
+              />
+            </NuxtLink>
+          </li>
+        </ul>
+      </nav>
+    </footer>
   </div>
 </template>
 
@@ -72,28 +85,8 @@ const links = [
 </script>
 
 <style scoped lang="scss">
-.sublinks__container {
-  @apply flex justify-evenly w-full;
-
-  &--link {
-    @apply cursor-pointer;
-    @apply opacity-50;
-    @apply transition-all;
-    @apply text-[10px] sm:text-xs;
-    @apply py-3;
-    @apply flex-1;
-    @apply text-center;
-    @apply border;
-
-    &:hover {
-      @apply transition-all;
-      @apply opacity-100;
-    }
-  }
-}
-
 .router-link-active {
-  @apply opacity-100;
+  @apply opacity-100 transition-all;
 }
 
 .default__layout {
@@ -104,18 +97,28 @@ const links = [
   @apply items-center justify-center;
   @apply flex-1;
 
-  &--nav__bar {
+  &--header {
     @apply fixed top-0 left-0 w-full px-4;
     @apply flex justify-between;
     @apply items-center;
     @apply gap-2;
 
+    &--left {
+      &--link {
+        @apply flex opacity-50 hover:opacity-100 py-4;
+        @apply transition-all;
+      }
+      .router-link-active {
+        @apply opacity-100;
+      }
+    }
     &--right {
       @apply flex items-center;
+      @apply gap-2;
       @apply text-lg;
 
-      > a {
-        @apply py-4  flex h-fit;
+      &--link {
+        @apply items-center py-4 flex h-fit;
 
         &:hover {
           .iconify {
@@ -129,14 +132,50 @@ const links = [
         @apply opacity-50;
         @apply transition-all;
       }
+
+      &--clock {
+        @apply text-sm;
+      }
     }
   }
-}
 
-.nav-link {
-  @apply justify-center;
-  :deep(.char__sm) {
-    @apply md:text-base;
+  &--page__title {
+    @apply mt-14 mb-4 h-5;
+  }
+
+  &--page__container {
+    @apply flex-1 min-h-[225px] flex justify-center items-center w-full;
+  }
+
+  &--footer {
+    @apply w-full;
+    > nav > ul {
+      @apply flex;
+      > li {
+        @apply flex-1;
+        > a > span {
+          @apply justify-center;
+          :deep(.char__sm) {
+            @apply md:text-base;
+          }
+        }
+      }
+    }
+    &--link {
+      @apply cursor-pointer;
+      @apply opacity-50;
+      @apply transition-all;
+      @apply text-[10px] sm:text-xs;
+      @apply py-3;
+      @apply flex-1;
+      @apply text-center;
+      @apply border;
+
+      &:hover {
+        @apply transition-all;
+        @apply opacity-100;
+      }
+    }
   }
 }
 </style>

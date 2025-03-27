@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full h-full">
-    <TableWithFill color="#57b13c" class="content__container" :config="table" />
+  <div class="projects__page">
+    <TableWithFill color="#57b13c" :config="table" />
   </div>
 </template>
 
@@ -44,11 +44,8 @@ const table = useTable(() => ({
 </script>
 
 <style scoped lang="scss">
-.content__container {
+.projects__page {
   @apply flex;
-  @apply flex-col;
-  @apply gap-6;
   @apply w-full h-full;
-  @apply overflow-x-scroll;
 }
 </style>

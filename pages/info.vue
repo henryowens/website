@@ -1,5 +1,5 @@
 <template>
-  <div class="content__container">
+  <div class="info__page">
     <RandomCharText
       text="I am a website developer with over 7 years experience."
       class="justify-center"
@@ -19,18 +19,11 @@ definePageMeta({
 </script>
 
 <style scoped lang="scss">
-.content__container {
-  @apply flex;
-  @apply flex-col;
+.info__page {
+  @apply flex flex-col;
   @apply gap-6;
-  @apply text-blue-500;
   @apply w-full;
   @apply mx-4;
-}
-</style>
-
-<style lang="scss">
-.sentance__container {
-  @apply justify-center;
+  @apply text-blue-500;
 }
 </style>

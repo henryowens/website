@@ -30,33 +30,41 @@ const tableConfig = computed(() => ({
   columns: toValue(config).columns,
   data: [
     ...toValue(config).data,
-    ...Array.from(
-      { length: import.meta.server ? 25 : dummyRows.value },
-      () => ({})
-    ),
+    ...Array.from({ length: dummyRows.value }, () => ({})),
   ],
 }));
 </script>
 
 <template>
-  <ClientOnly>
+  <div class="relative flex w-full">
     <div
       ref="contentContainer"
-      class="flex overflow-y-scroll"
+      class="flex overflow-y-scroll content__container"
       :class="$attrs.class"
     >
       <BaseTable :color="color" class="w-full" :config="tableConfig" />
     </div>
-    <template #fallback>
-      <div
-        ref="contentContainer"
-        class="flex overflow-y-hidden"
-        :class="$attrs.class"
-      >
-        <BaseTable :color="color" class="w-full" :config="tableConfig" />
-      </div>
-    </template>
-  </ClientOnly>
+
+    <div
+      class="flex overflow-y-hidden content__container absolute top-0 left-0 -z-10"
+      :class="$attrs.class"
+    >
+      <BaseTable
+        :color="color"
+        class="w-full"
+        :config="{
+          columns: toValue(config).columns,
+          data: [
+            ...toValue(config).data,
+            ...Array.from(
+              { length: 50 - toValue(config).data.length },
+              () => ({})
+            ),
+          ],
+        }"
+      />
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">

@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full h-full">
-    <TableWithFill class="content__container" color="#ef4e28" :config="table" />
+  <div class="experience__page">
+    <TableWithFill color="#ef4e28" :config="table" />
   </div>
 </template>
 
@@ -42,7 +42,7 @@ const table = useTable(() => ({
       position: "Frontend Developer",
       time_period: "Sep 2023 - Current",
       location: "Amsterdam, NL",
-      stack: "Vue.js (Nuxt.js), Tailwind CSS",
+      stack: "Vue.js (Nuxt.js), React Native, Tailwind CSS",
       website: "https://matchwornshirt.com",
     },
     {
@@ -82,11 +82,8 @@ const table = useTable(() => ({
 </script>
 
 <style scoped lang="scss">
-.content__container {
+.experience__page {
   @apply flex;
-  @apply flex-col;
-  @apply gap-6;
   @apply w-full h-full;
-  @apply overflow-x-scroll;
 }
 </style>
