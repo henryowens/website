@@ -42,10 +42,7 @@ watch(isEspPressed, (isEspPressed) => {
 </script>
 
 <template>
-  <table
-    class="z-50"
-    :style="{ '--table-color': color, borderLeftColor: color }"
-  >
+  <table :style="{ '--table-color': color, borderLeftColor: color }">
     <thead>
       <tr>
         <th />
@@ -87,6 +84,7 @@ watch(isEspPressed, (isEspPressed) => {
 table {
   @apply w-full border-l-[33px];
   border-color: var(--table-color);
+  border-bottom: 1px solid lightgray;
   thead {
     tr {
       background-color: var(--table-color);
