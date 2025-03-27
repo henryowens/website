@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <RandomCharText :text="title ?? ''" :key="title" class="mt-14 mb-4" />
+    <RandomCharText :text="title ?? ''" :key="title" class="mt-14 mb-4 h-5" />
 
     <div class="flex-1 min-h-[225px] flex justify-center items-center w-full">
       <slot />
@@ -97,6 +97,7 @@ const links = [
 }
 
 .default__layout {
+  @apply max-h-dvh;
   @apply flex flex-col;
   @apply items-center;
   @apply gap-0;

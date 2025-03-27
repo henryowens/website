@@ -1,5 +1,7 @@
 <template>
-  <TableWithFill class="content__container" color="#ef4e28" :config="table" />
+  <div class="flex w-full h-full">
+    <TableWithFill class="content__container" color="#ef4e28" :config="table" />
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -17,7 +17,6 @@ const tableHeight = computed(() => dataRowHeight.value + rowHeadHeight);
 const remainingContentSpace = ref(0);
 
 onMounted(() => {
-  console.log(availibleContentHeight.value);
   remainingContentSpace.value =
     availibleContentHeight.value - tableHeight.value;
 });
@@ -31,36 +30,41 @@ const tableConfig = computed(() => ({
   columns: toValue(config).columns,
   data: [
     ...toValue(config).data,
-    ...Array.from({ length: dummyRows.value }, () => ({})),
+    ...Array.from(
+      { length: import.meta.server ? 25 : dummyRows.value },
+      () => ({})
+    ),
   ],
 }));
 </script>
 
 <template>
-  <div
-    ref="contentContainer"
-    class="relative h-full"
-    :class="$attrs.class"
-    :style="{ '--table-color': color }"
-  >
-    <div>
+  <ClientOnly>
+    <div
+      ref="contentContainer"
+      class="flex overflow-y-scroll"
+      :class="$attrs.class"
+    >
       <BaseTable :color="color" class="w-full" :config="tableConfig" />
-
-      <div
-        class="mocktable absolute -z-30 top-0 left-0 w-full h-full border-l-[33px] overflow-hidden"
-      >
-        <div class="sidebar w-full h-[32.5px]"></div>
-        <div class="bg-[#e5e6e6] w-full h-full"></div>
-      </div>
     </div>
-  </div>
+    <template #fallback>
+      <div
+        ref="contentContainer"
+        class="flex overflow-y-hidden"
+        :class="$attrs.class"
+      >
+        <BaseTable :color="color" class="w-full" :config="tableConfig" />
+      </div>
+    </template>
+  </ClientOnly>
 </template>
 
-<style lang="scss" scoped>
-.mocktable {
-  border-color: var(--table-color);
-  .sidebar {
-    background: var(--table-color);
-  }
+<style scoped lang="scss">
+.content__container {
+  @apply flex;
+  @apply flex-col;
+  @apply gap-6;
+  @apply w-full h-full;
+  @apply overflow-x-scroll;
 }
 </style>

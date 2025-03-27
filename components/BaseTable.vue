@@ -42,7 +42,10 @@ watch(isEspPressed, (isEspPressed) => {
 </script>
 
 <template>
-  <table class="z-50" :style="{ '--table-color': color }">
+  <table
+    class="z-50"
+    :style="{ '--table-color': color, borderLeftColor: color }"
+  >
     <thead>
       <tr>
         <th />
@@ -51,7 +54,7 @@ watch(isEspPressed, (isEspPressed) => {
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="overflow-scroll">
       <tr
         v-for="(row, rowIndex) in toValue(config).data"
         :key="rowIndex"
@@ -80,7 +83,7 @@ watch(isEspPressed, (isEspPressed) => {
   </table>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 table {
   @apply w-full border-l-[33px];
   border-color: var(--table-color);

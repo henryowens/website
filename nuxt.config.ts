@@ -5,7 +5,11 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
   css: ["~/assets/css/main.scss"],
-
+  nitro: {
+    externals: {
+      inline: ['unhead'],
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
