@@ -5,11 +5,13 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
   css: ["~/assets/css/main.scss"],
+
   nitro: {
     externals: {
       inline: ['unhead'],
     },
   },
+
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -21,13 +23,7 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
   },
 
-  modules: [
-    "@nuxt/icon",
-    "@nuxtjs/sitemap",
-    "nuxt-schema-org",
-    "@vueuse/nuxt",
-    "@nuxtjs/google-fonts",
-  ],
+  modules: ["@nuxt/icon", "@nuxtjs/sitemap", "nuxt-schema-org", "@vueuse/nuxt", "@nuxtjs/google-fonts", "@sentry/nuxt/module"],
 
   googleFonts: {
     families: {
@@ -74,4 +70,17 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2025-03-26",
+
+  sentry: {
+    sourceMapsUploadOptions: {
+      org: "henry-owens",
+      project: "henryowens-dev",
+    },
+
+    autoInjectServerSentry: "top-level-import",
+  },
+
+  sourcemap: {
+    client: "hidden",
+  },
 });

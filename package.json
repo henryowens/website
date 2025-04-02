@@ -14,7 +14,9 @@
     "@nuxt/icon": "^1.11.0",
     "@nuxtjs/google-fonts": "3.2.0",
     "@nuxtjs/sitemap": "6.0.0-beta.1",
+    "@sentry/nuxt": "^9",
     "@vueuse/nuxt": "13.0.0",
+    "import-in-the-middle": "^1.13.1",
     "nuxt": "^3.16.1",
     "nuxt-schema-org": "^3.5.0",
     "vue": "latest"
@@ -26,5 +28,10 @@
     "postcss": "^8.5.3",
     "sass": "^1.86.0",
     "tailwindcss": "^3.4.17"
+  },
+  "pnpm": {
+    "overrides": {
+      "@vercel/nft": "^0.27.4"
+    }
   }
 }
